@@ -5,12 +5,18 @@ using DiscordBot;
 
 public class BopcModule : InteractionModuleBase<SocketInteractionContext>
 {
-    [SlashCommand("bopc", "Criar boletim de ocorrência")]
+    [SlashCommand("bopc", "Criar boletim de ocorrência", runMode: RunMode.Async)]
     public async Task CriarBopc()
     {
         try
         {
             await DeferAsync(ephemeral: true);
+
+            if (Context.Channel.Name != "𝐀𝐠𝐞𝐧𝐭𝐞-𝐁𝐎𝐏𝐂" && Context.Channel.Name != "𝐚𝐠𝐞𝐧𝐭𝐞-𝐛𝐨𝐩𝐜")
+            {
+                await FollowupAsync($"❌ Erro: Este comando só pode ser usado no canal **𝐀𝐠𝐞𝐧𝐭𝐞-𝐁𝐎𝐏𝐂**.", ephemeral: true);
+                return;
+            }
 
             var guildId = Context.Interaction.GuildId;
             IGuild guild = Context.Guild;
