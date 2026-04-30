@@ -6,6 +6,7 @@ using DiscordBot;
 public class BopcModule : InteractionModuleBase<SocketInteractionContext>
 {
     [SlashCommand("bopc", "Criar boletim de ocorrência", runMode: RunMode.Async)]
+    [DefaultMemberPermissions(GuildPermission.ViewChannel | GuildPermission.SendMessages)]
     public async Task CriarBopc()
     {
         try
