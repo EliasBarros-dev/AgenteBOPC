@@ -1,0 +1,12 @@
+﻿{
+  "$schema": "http://json.schemastore.org/launchsettings.json",
+  "profiles": {
+    "DiscordBot": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "TOKEN": "SEU_TOKEN_AQUI_NO_GITHUB",
+        "SERVER_ID": "1499173293331189962"
+      }
+    }
+  }
+}
