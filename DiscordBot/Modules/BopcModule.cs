@@ -13,9 +13,9 @@ public class BopcModule : InteractionModuleBase<SocketInteractionContext>
         {
             await DeferAsync(ephemeral: true);
 
-            if (Context.Channel.Name != "𝐀𝐠𝐞𝐧𝐭𝐞-𝐁𝐎𝐏𝐂" && Context.Channel.Name != "𝐚𝐠𝐞𝐧𝐭𝐞-𝐛𝐨𝐩𝐜")
+            if (!Context.Channel.Name.Contains("𝐁𝐨𝐥𝐞𝐭𝐢𝐦-𝐝𝐞-𝐎𝐜𝐨𝐫𝐫𝐞𝐧𝐜𝐢𝐚") && !Context.Channel.Name.Contains("b𝐨𝐥𝐞𝐭𝐢𝐦-𝐝𝐞-b𝐜𝐨𝐫𝐫𝐞𝐧𝐜𝐢𝐚"))
             {
-                await FollowupAsync($"❌ Erro: Este comando só pode ser usado no canal **𝐀𝐠𝐞𝐧𝐭𝐞-𝐁𝐎𝐏𝐂**.", ephemeral: true);
+                await FollowupAsync($"❌ Erro: Este comando só pode ser usado em um canal que contenha **𝐁𝐨𝐥𝐞𝐭𝐢𝐦-𝐝𝐞-𝐎𝐜𝐨𝐫𝐫𝐞𝐧𝐜𝐢𝐚** no nome.", ephemeral: true);
                 return;
             }
 
