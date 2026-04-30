@@ -33,7 +33,8 @@ class Program
 
         var config = new DiscordSocketConfig
         {
-            GatewayIntents = GatewayIntents.AllUnprivileged | GatewayIntents.GuildMembers
+            GatewayIntents = GatewayIntents.AllUnprivileged | GatewayIntents.GuildMembers,
+            UseInteractionSnowflakeDate = false
         };
 
         _client = new DiscordSocketClient(config);
@@ -294,10 +295,12 @@ class Program
     {
         try
         {
-            // Aborta qualquer iteracao velha demais ou "caducada" para previnir exceções
-            if (DateTimeOffset.UtcNow.Subtract(interaction.CreatedAt).TotalSeconds > 2.5) 
+            var diff = DateTimeOffset.UtcNow.Subtract(interaction.CreatedAt).TotalSeconds;
+            Console.WriteLine($"[Interaction] Recebida. Diff de tempo: {diff}s");
+
+            if (diff > 15) 
             {
-                Console.WriteLine("⚠️ Ignorando clique velho/pendente do Discord.");
+                Console.WriteLine("⚠️ Ignorando interação muito velha pendente do Discord.");
                 return;
             }
 
